@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: blueviolet;
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 30px 10px 30px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-radius: 15px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.651);
+        }
+
+        h1 {
+            font-size: 22px;
+        }
+
+        .textarea {
+            width: 400px;
+            height: 100px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.568);
+            outline: none;
+            resize: none;
+            font-size: 18px;
+
+        }
+
+        .char {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5px;
+        }
+
+        .char p {
+            font-size: 18px;
+            color: grey;
+        }
+
+        .total {
+            color: blue;
+        }
+
+        .remain {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Real Time Char Counter</h1>
+        <textarea name="" id="textarea" placeholder="please write your text..." class="textarea"></textarea>
+        <div class="char">
+            <p>Total Character: <span class="total">0</span></p>
+            <p>Remaining Character: <span class="remain">60</span></p>
+        </div>
+    </div>
+    <script>
+        const text = document.getElementById("textarea")
+        const total = document.querySelector(".total")
+        const remain = document.querySelector(".remain")
+        text.addEventListener("keyup", () => {
+            if (text.value.length <= 60) {
+                updateCounter()
+            }
+            
+        })
+
+        function updateCounter() {
+
+            total.innerHTML = text.value.length
+            remain.innerHTML = 60 - text.value.length
+
+        }
+    </script>
+</body>
+
+</html>
